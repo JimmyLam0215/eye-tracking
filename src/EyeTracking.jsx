@@ -11,7 +11,8 @@ const EyeTracking = () => {
         const webgazer = window.webgazer;
         webgazer.setGazeListener((data, clock)=>{
         console.log(data, clock);
-        setGazePosition({x:data.x, y:data.y})
+        if(data.x && data.y)
+            setGazePosition({x:data.x, y:data.y})
         if (data.x < centerX - movementThreshold) {
             setDirection('Eyes moved left');
         } else if (data.x > centerX + movementThreshold) {
